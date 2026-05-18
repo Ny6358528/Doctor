@@ -57,12 +57,8 @@ class CustomBackgroundImageAndDoctorImage extends StatelessWidget {
             child: const CustomCentreTextInOnboardingBody(),
           ),
 
-          Positioned(
-            bottom: -150.h,
-            left: 20.w,
-            right: 20.w,
-            child: const CustomElevatedButtonInOnboarding(),
-          ),
+     
+          
         ],
       ),
     );

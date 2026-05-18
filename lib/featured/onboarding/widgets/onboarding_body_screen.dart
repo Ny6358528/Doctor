@@ -1,11 +1,11 @@
+import 'package:doctor_app/featured/onboarding/widgets/custom_elevated_button_in_onboarding.dart';
 import 'package:flutter/material.dart';
 import 'package:doctor_app/core/utitls/app_color.dart';
 
 
 import 'logo_doc_doc_title_in_onboarding_body.dart';
 import 'custom_background_image_and_doctor_image.dart';
-import 'custom_centre_text_in_onboarding_body.dart';
-import 'custom_elevated_button_in_onboarding.dart';
+
 
 class OnboardingBodyScreen extends StatelessWidget {
   const OnboardingBodyScreen({super.key});
@@ -25,9 +25,11 @@ class OnboardingBodyScreen extends StatelessWidget {
                 SizedBox(height: 30),
 
                 CustomBackgroundImageAndDoctorImage(),
+                 SizedBox(height: 90),
 
 
 
+   CustomElevatedButtonInOnboarding(),
 
 
 

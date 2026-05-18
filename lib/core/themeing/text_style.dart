@@ -10,11 +10,43 @@ class AppTextStyles {
       color: Colors.black,
     );
   }
-  static TextStyle text12Black() {
+
+   static TextStyle text16White() {
+    return  TextStyle(
+      fontSize: 16.sp,
+
+      color: Colors.white,
+       fontWeight: FontWeight.w600,
+    );
+  }
+   static TextStyle text12Black() {
     return  TextStyle(
       fontSize: 12.sp,
-
+   
       color: Colors.black,
+    );
+  }
+ 
+  static TextStyle text14grey() {
+    return  TextStyle(
+      fontSize: 14.sp,
+
+      color: AppColor.geryColor,
+       fontWeight: FontWeight.w400,
+    );
+  }
+   static TextStyle text14Black() {
+    return  TextStyle(
+      fontSize: 14.sp,
+color: Colors.black,
+       fontWeight: FontWeight.w400,
+    );
+  }
+   static TextStyle text14Blue() {
+    return  TextStyle(
+          fontSize: 14.sp,
+       fontWeight: FontWeight.w400,
+      color: AppColor.primaryColor,
     );
   }
   static TextStyle text32BlueBold() {
@@ -24,4 +56,19 @@ class AppTextStyles {
       color: AppColor.primaryColor,
     );
   }
+
+   static TextStyle text24BlueBold() {
+    return  TextStyle(
+      fontSize: 24.sp,
+      fontWeight: FontWeight.bold,
+      color: AppColor.primaryColor,
+    );
+    }
+     static TextStyle text13Blue() {
+    return  TextStyle(
+      fontSize: 13.sp,
+      fontWeight: FontWeight.w400,
+      color: AppColor.primaryColor,
+    );
+    }
 }

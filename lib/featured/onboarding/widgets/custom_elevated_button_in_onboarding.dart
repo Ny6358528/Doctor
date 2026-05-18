@@ -1,6 +1,8 @@
+import 'package:doctor_app/core/routing/routing_name.dart';
 import 'package:flutter/material.dart';
 
 import 'package:doctor_app/core/utitls/app_color.dart';
+import 'package:go_router/go_router.dart';
 
 class CustomElevatedButtonInOnboarding extends StatelessWidget {
   const CustomElevatedButtonInOnboarding({super.key});
@@ -21,7 +23,8 @@ class CustomElevatedButtonInOnboarding extends StatelessWidget {
             ),
           ),
           onPressed: () {
-            // TODO: navigation
+              print("pressed");
+        GoRouter.of(context).go(RoutingName.kLoginScreen);
           },
           child: const Text('Get Started'),
         ),
