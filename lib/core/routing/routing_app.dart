@@ -1,21 +1,31 @@
+import 'package:doctor_app/core/di/dependency%20_injection.dart';
 import 'package:doctor_app/core/routing/routing_name.dart';
-import 'package:doctor_app/featured/login/screen/login_screen.dart';
+import 'package:doctor_app/featured/home/ui/screens/home_screen.dart';
+import 'package:doctor_app/featured/login/logic/cubit/login_cubit.dart';
+import 'package:doctor_app/featured/login/ui/screen/login_screen.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../featured/onboarding/screens/onboarding_screen.dart';
 
 class RoutingApp {
-
-// GoRouter configuration
- static final  router = GoRouter(
+  // GoRouter configuration
+  static final router = GoRouter(
     routes: [
       GoRoute(
         path: RoutingName.onBoardingScreen,
         builder: (context, state) => OnboardingScreen(),
       ),
-       GoRoute(
+      GoRoute(
         path: RoutingName.kLoginScreen,
-        builder: (context, state) => LoginScreen(),
+        builder: (context, state) => BlocProvider(
+          create: (context) =>    DependencyInjection.getIt<LoginCubit>(),
+          child: LoginScreen(),
+        ),
+      ),
+        GoRoute(
+        path: RoutingName.kHomeScreen,
+        builder: (context, state) =>HomeScreen() ,
       ),
     ],
   );

@@ -1,4 +1,4 @@
-import 'package:doctor_app/featured/login/widget/login_body_screen.dart';
+import 'package:doctor_app/featured/login/ui/widget/login_body_screen.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatelessWidget {

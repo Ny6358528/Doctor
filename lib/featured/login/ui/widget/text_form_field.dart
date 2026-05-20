@@ -9,7 +9,7 @@ class CustomTextFormField extends StatelessWidget {
     this.hintText,
     this.suffixIcon,
     this.hintStyle,
-    this.contentPadding,
+    this.contentPadding, required this.controller, required this.validator,
   });
 
   final bool obscureText;
@@ -17,14 +17,20 @@ class CustomTextFormField extends StatelessWidget {
   final TextStyle? hintStyle;
   final Widget? suffixIcon;
   final EdgeInsetsGeometry? contentPadding;
+ final TextEditingController controller;
+  final Function(String?) validator;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      
+      controller: controller,
+      validator: (value){
+        return validator(value);
+      },
       obscureText: obscureText,
       style: AppTextStyles.text12Black(),
       decoration: InputDecoration(
+        
         filled: true,
         fillColor: AppColor.lightergeryColor,
         hintStyle: hintStyle ?? AppTextStyles.text14grey(),
