@@ -22,13 +22,17 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
   bool hasMinLength = false;
   bool hasNumber = false;
 
-  late TextEditingController passwordController;
+  late final TextEditingController passwordController;
+  late final TextEditingController emailController;
 
   @override
   void initState() {
     super.initState();
 
-    passwordController = context.read<LoginCubit>().passwordController;
+    final cubit = context.read<LoginCubit>();
+
+    passwordController = cubit.passwordController;
+    emailController = cubit.emailController;
 
     setupPasswordListener();
   }
@@ -36,94 +40,67 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
   void setupPasswordListener() {
     passwordController.addListener(() {
       setState(() {
-        hasUppercase =
-            AppRegex.hasUpperCase(passwordController.text);
-
-        hasLowercase =
-            AppRegex.hasLowerCase(passwordController.text);
-
-        hasSpecialCharacters =
-            AppRegex.hasSpecialCharacter(passwordController.text);
-
-        hasMinLength =
-            AppRegex.hasMinLength(passwordController.text);
-
-        hasNumber =
-            AppRegex.hasNumber(passwordController.text);
+        hasUppercase = AppRegex.hasUpperCase(passwordController.text);
+        hasLowercase = AppRegex.hasLowerCase(passwordController.text);
+        hasSpecialCharacters = AppRegex.hasSpecialCharacter(passwordController.text);
+        hasMinLength = AppRegex.hasMinLength(passwordController.text);
+        hasNumber = AppRegex.hasNumber(passwordController.text);
       });
     });
   }
-@override
-void dispose() {
-  passwordController.dispose();
-  super.dispose();
-}
+
+  @override
+  void dispose() {
+    
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
+    final cubit = context.read<LoginCubit>();
+
     return Form(
-      key: context.read<LoginCubit>().formKey,
+      key: cubit.formKey,
       child: Column(
         children: [
-
-          /// Email
           CustomTextFormField(
             hintText: "Email",
-
-            suffixIcon: const Icon(
-              Icons.email_outlined,
-            ),
-
-            controller:
-                context.read<LoginCubit>().emailController,
-
-            validator: (String? value) {
-              if (value == null ||
-                  value.isEmpty ||
-                  !AppRegex.isEmailValid(value)) {
+            suffixIcon: const Icon(Icons.email_outlined),
+            controller: cubit.emailController,
+            validator: (value) {
+              if (value == null || value.isEmpty || !AppRegex.isEmailValid(value)) {
                 return "Please Enter a Valid Email";
               }
-
               return null;
             },
           ),
 
           Spacing.verticalSpacing(16),
 
-          /// Password
           CustomTextFormField(
             hintText: "Password",
-
             obscureText: !isPasswordVisible,
-
             suffixIcon: IconButton(
               onPressed: () {
                 setState(() {
-                  isPasswordVisible =
-                      !isPasswordVisible;
+                  isPasswordVisible = !isPasswordVisible;
                 });
               },
-
               icon: Icon(
                 isPasswordVisible
                     ? Icons.visibility
                     : Icons.visibility_off_outlined,
-
                 color: Colors.grey,
               ),
             ),
-
-            controller:
-                context.read<LoginCubit>().passwordController,
-
-            validator: (String? value) {
+            controller: cubit.passwordController,
+            validator: (value) {
               if (value == null || value.isEmpty) {
                 return "Please Enter a Valid Password";
               }
-
               if (!AppRegex.isPasswordValid(value)) {
                 return "Password is too weak";
               }
-
               return null;
             },
           ),
@@ -133,8 +110,7 @@ void dispose() {
           PasswordValidator(
             hasUppercase: hasUppercase,
             hasLowercase: hasLowercase,
-            hasSpecialCharacters:
-                hasSpecialCharacters,
+            hasSpecialCharacters: hasSpecialCharacters,
             hasMinLength: hasMinLength,
             hasNumber: hasNumber,
           ),

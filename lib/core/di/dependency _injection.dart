@@ -3,6 +3,8 @@ import 'package:doctor_app/core/networking/api_factory.dart';
 import 'package:doctor_app/core/networking/api_services.dart';
 import 'package:doctor_app/featured/login/data/repos/login_repos.dart';
 import 'package:doctor_app/featured/login/logic/cubit/login_cubit.dart';
+import 'package:doctor_app/featured/sign_up/data/repo/signup_repos.dart';
+import 'package:doctor_app/featured/sign_up/logic/cubit/sign_up_cubit.dart';
 import 'package:get_it/get_it.dart';
 
 class DependencyInjection {
@@ -22,6 +24,14 @@ class DependencyInjection {
 
     getIt.registerFactory<LoginCubit>(
       () => LoginCubit(getIt()),
+    );
+     // SignUp
+    getIt.registerLazySingleton<SignupRepos>(
+      () => SignupRepos(getIt()),
+    );
+
+    getIt.registerFactory<SignUpCubit>(
+      () => SignUpCubit(getIt()),
     );
   }
 }

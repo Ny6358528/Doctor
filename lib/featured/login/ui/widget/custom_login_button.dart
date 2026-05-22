@@ -1,15 +1,11 @@
-
 import 'package:doctor_app/core/themeing/text_style.dart';
 import 'package:doctor_app/core/utitls/app_color.dart';
-import 'package:doctor_app/featured/login/data/model/login_request_model.dart';
 import 'package:doctor_app/featured/login/logic/cubit/login_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 class CustomLoginButton extends StatefulWidget {
-  const CustomLoginButton({
-    super.key,
-  
-  });
+  const CustomLoginButton({super.key});
 
   @override
   State<CustomLoginButton> createState() => _CustomLoginButtonState();
@@ -30,19 +26,11 @@ class _CustomLoginButtonState extends State<CustomLoginButton> {
         ),
         onPressed: () {
           if (context.read<LoginCubit>().formKey.currentState!.validate()) {
-            context.read<LoginCubit>().emitLoginState(
-                  LoginRequestModel(
-                    email: context.read<LoginCubit>().emailController.text,
-                    password: context.read<LoginCubit>().passwordController.text,
-                  ),
-                );
+            context.read<LoginCubit>().emitLoginState();
             // login logic
           }
         },
-        child: Text(
-          "Login",
-          style: AppTextStyles.text16White(),
-        ),
+        child: Text("Login", style: AppTextStyles.text16White()),
       ),
     );
   }

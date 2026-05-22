@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:doctor_app/core/helper/spacing.dart';
 import 'package:doctor_app/core/themeing/text_style.dart';
 import 'package:doctor_app/featured/login/ui/widget/custom_donot_have_account.dart';
@@ -6,71 +7,56 @@ import 'package:doctor_app/featured/login/ui/widget/custom_login_button.dart';
 import 'package:doctor_app/featured/login/ui/widget/custom_term_and_conditions_text.dart';
 import 'package:doctor_app/featured/login/ui/widget/email_and_password.dart';
 import 'package:doctor_app/featured/login/ui/widget/login_bloc_listener.dart';
-import 'package:flutter/material.dart';
 
-class LoginBodyScreen extends StatefulWidget {
+class LoginBodyScreen extends StatelessWidget {
   const LoginBodyScreen({super.key});
 
   @override
-  State<LoginBodyScreen> createState() => _LoginBodyScreenState();
-}
-
-class _LoginBodyScreenState extends State<LoginBodyScreen> {
-
-
-  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 24,
-              vertical: 30,
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+    return LoginBlocListener(
+      child: Scaffold(
+        body: SafeArea(
+          child: SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 24,
+                vertical: 30,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Welcome Back 👋",
+                    style: AppTextStyles.text24BlueBold(),
+                  ),
 
-                /// Title
-                Text(
-                  "Welcome Back 👋",
-                  style: AppTextStyles.text24BlueBold(),
-                ),
+                  Spacing.verticalSpacing(8),
 
-                Spacing.verticalSpacing(8),
+                  Text(
+                    "We’re excited to have you back, can’t wait to see what you’ve been up to.",
+                    style: AppTextStyles.text14grey(),
+                  ),
 
-                /// Subtitle
-                Text(
-                  "We’re excited to have you back, "
-                  "can’t wait to see what you’ve been up to.",
-                  style: AppTextStyles.text14grey(),
-                ),
+                  Spacing.verticalSpacing(30),
 
-                Spacing.verticalSpacing(30),
+                  const EmailAndPassword(),
 
-                /// Form
-              
-EmailAndPassword(),
-                /// Forgot password
-                CustomForgetPassword(),
+                  CustomForgetPassword(),
 
-                Spacing.verticalSpacing(20),
+                  Spacing.verticalSpacing(20),
 
-                /// Login Button
-                CustomLoginButton(),
+                  CustomLoginButton(),
 
-                Spacing.verticalSpacing(20),
+                  Spacing.verticalSpacing(20),
 
-                /// Terms
-           CustomTermaAndConditionsText(),
+                  CustomTermaAndConditionsText(),
 
-                Spacing.verticalSpacing(16),
+                  Spacing.verticalSpacing(16),
 
-                /// Sign up
-                CustomDonotHaveAccount(),
-                LoginBlocListener(),
-              ],
+                  CustomDonotHaveAccount(),
+                ],
+              ),
             ),
           ),
         ),

@@ -22,10 +22,10 @@ class CustomElevatedButtonInOnboarding extends StatelessWidget {
               borderRadius: BorderRadius.circular(16),
             ),
           ),
-          onPressed: () {
-              print("pressed");
-        GoRouter.of(context).go(RoutingName.kLoginScreen);
-          },
+         onPressed: () {
+  print("pressed");
+  GoRouter.of(context).go(RoutingName.kLoginScreen);
+},
           child: const Text('Get Started'),
         ),
       ),
