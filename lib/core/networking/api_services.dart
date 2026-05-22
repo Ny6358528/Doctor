@@ -2,6 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:doctor_app/core/networking/api_constants.dart';
 import 'package:doctor_app/featured/login/data/model/login_request_model.dart';
 import 'package:doctor_app/featured/login/data/model/login_respone_model.dart';
+import 'package:doctor_app/featured/sign_up/data/model/signup_request_model.dart';
+import 'package:doctor_app/featured/sign_up/data/model/signup_response_model.dart';
 import 'package:retrofit/retrofit.dart';
 
 part 'api_services.g.dart';
@@ -12,4 +14,7 @@ abstract class RestClient {
 
    @POST(ApiConstants.apiLogin)
   Future<LoginResponeModel> createLogin(@Body() LoginRequestModel loginRequestModel);
+  
+   @POST(ApiConstants.apiSignUp)
+  Future<SignupResponseModel> createSignup(@Body() SignupRequestModel signupRequestModel);
 }

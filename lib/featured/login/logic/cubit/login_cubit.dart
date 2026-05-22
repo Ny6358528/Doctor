@@ -9,19 +9,46 @@ part 'login_state.dart';
 part 'login_cubit.freezed.dart';
 
 class LoginCubit extends Cubit<LoginState> {
-  LoginRepos loginRepos;
-  LoginCubit(this.loginRepos) : super(LoginState.initial());
-   final TextEditingController emailController=TextEditingController();
-    final TextEditingController passwordController=TextEditingController();
-  final formKey = GlobalKey<FormState>();
- 
+  final LoginRepos loginRepos;
 
-  void emitLoginState(LoginRequestModel loginRequestModel) async {
-    emit(LoginState.loading());
-    final response = await loginRepos.createLogin(loginRequestModel);
-    response.when(
-      success: (data) => emit(LoginState.success(data)),
-      failure: (error) => emit(LoginState.failure(error: error.apiErrorModel.message?? 'An error occurred')),
+  LoginCubit(this.loginRepos) : super(const LoginState.initial());
+
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+
+  final formKey = GlobalKey<FormState>();
+
+  Future<void> emitLoginState() async {
+    if (!formKey.currentState!.validate()) return;
+
+    emit(const LoginState.loading());
+
+    final response = await loginRepos.createLogin(
+      LoginRequestModel(
+        email: emailController.text,
+        password: passwordController.text,
+      ),
     );
+
+    response.when(
+      success: (data) {
+        emit(LoginState.success(data));
+      },
+      failure: (error) {
+        emit(
+          LoginState.failure(
+            error: error.apiErrorModel.message ??
+                error.message,
+          ),
+        );
+      },
+    );
+  }
+
+  @override
+  Future<void> close() {
+    emailController.dispose();
+    passwordController.dispose();
+    return super.close();
   }
 }

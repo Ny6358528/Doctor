@@ -1,0 +1,27 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+part of 'signup_request_model.dart';
+
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+SignupRequestModel _$SignupRequestModelFromJson(Map<String, dynamic> json) =>
+    SignupRequestModel(
+      name: json['name'] as String,
+      email: json['email'] as String,
+      phone: json['phone'] as String,
+      gender: json['gender'] as String,
+      password: json['password'] as String,
+      password_confirmation: json['password_confirmation'] as String,
+    );
+
+Map<String, dynamic> _$SignupRequestModelToJson(SignupRequestModel instance) =>
+    <String, dynamic>{
+      'name': instance.name,
+      'email': instance.email,
+      'phone': instance.phone,
+      'gender': instance.gender,
+      'password': instance.password,
+      'password_confirmation': instance.password_confirmation,
+    };
