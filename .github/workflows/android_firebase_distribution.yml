@@ -44,11 +44,16 @@ jobs:
         working-directory: android
         run: bundle install --jobs 4 --retry 3
 
+<<<<<<< HEAD
+=======
+      # ✅ مهم: نحول JSON من Secret إلى ملف فعلي
+>>>>>>> df7620345662a42474582cfcc7f05c33bbb43c9c
       - name: Create Service Account File
         working-directory: android
         run: |
           echo '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}' > service-account.json
 
+<<<<<<< HEAD
       # تشخيص الملف
       - name: Check File Exists
         working-directory: android
@@ -75,6 +80,8 @@ jobs:
           print('client_email=',f.get('client_email'))
           "
 
+=======
+>>>>>>> df7620345662a42474582cfcc7f05c33bbb43c9c
       - name: Run Fastlane
         working-directory: android
         env:
