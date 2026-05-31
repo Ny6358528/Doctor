@@ -36,6 +36,10 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: "3.2"
+<<<<<<< HEAD
+=======
+          bundler-cache: true
+>>>>>>> cec7fcb63b3c7895378e7bb3969d1abf66c0e00c
 
       - name: Install Flutter Dependencies
         run: flutter pub get
@@ -43,11 +47,14 @@ jobs:
       - name: Verify Flutter Installation
         run: flutter doctor -v
 
+<<<<<<< HEAD
       # 🔥 IMPORTANT: install gems inside android folder (where Fastlane is)
       - name: Install Ruby Gems
         working-directory: android
         run: bundle install
 
+=======
+>>>>>>> cec7fcb63b3c7895378e7bb3969d1abf66c0e00c
       - name: Run Fastlane Firebase Distribution
         working-directory: android
         env:
