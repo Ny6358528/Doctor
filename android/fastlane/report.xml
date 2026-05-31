@@ -5,22 +5,12 @@
     
     
       
-      <testcase classname="fastlane.lanes" name="0: default_platform" time="0.0637428">
+      <testcase classname="fastlane.lanes" name="0: opt_out_usage" time="0.0814168">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="1: flutter clean" time="59.9086571">
-        
-      </testcase>
-    
-      
-      <testcase classname="fastlane.lanes" name="2: flutter pub get" time="35.3508866">
-        
-      </testcase>
-    
-      
-      <testcase classname="fastlane.lanes" name="3: flutter build apk --release --flavor production --target lib/main_production.dart" time="1542.2241636">
+      <testcase classname="fastlane.lanes" name="1: default_platform" time="0.0831481">
         
       </testcase>
     

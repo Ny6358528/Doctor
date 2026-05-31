@@ -4,8 +4,6 @@ default_platform(:android)
 
 platform :android do
 
-  desc "Firebase App Distribution"
-
   lane :firebase_distribution do
 
     sh "flutter clean"
@@ -15,11 +13,10 @@ platform :android do
 
     firebase_app_distribution(
       app: ENV["FIREBASE_APP_ID"],
-      firebase_cli_token: ENV["FIREBASE_CLI_TOKEN"],
+      service_credentials_file: "../service-account.json",
       android_artifact_type: "APK",
       android_artifact_path: "../build/app/outputs/flutter-apk/app-production-release.apk",
-      groups: "qa-team, trusted-testers",
-      release_notes: "New version available for testing."
+      release_notes: "New build"
     )
 
   end
