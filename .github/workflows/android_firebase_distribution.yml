@@ -43,13 +43,27 @@ jobs:
       - name: Install Flutter Dependencies
         run: flutter pub get
 
+<<<<<<< HEAD
       # 🔥 Install Fastlane dependencies (IMPORTANT)
+=======
+      # 🔥 تثبيت Ruby + Fastlane gems
+>>>>>>> 1388b265e8f3f75445c42737327195e11dd393b4
       - name: Install Ruby Dependencies
         working-directory: android
         run: bundle install
 
+<<<<<<< HEAD
       # 🚀 Run Fastlane (NO install_plugins step)
       - name: Run Fastlane Firebase Distribution
+=======
+      # 🔥 مهم جدًا: تحميل plugins
+      - name: Install Fastlane Plugins
+        working-directory: android
+        run: bundle exec fastlane install_plugins
+
+      # 🚀 تشغيل Fastlane
+      - name: Run Fastlane
+>>>>>>> 1388b265e8f3f75445c42737327195e11dd393b4
         working-directory: android
         env:
           FIREBASE_APP_ID: ${{ secrets.FIREBASE_APP_ID }}
