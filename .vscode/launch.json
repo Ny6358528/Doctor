@@ -1,0 +1,21 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "doctor development",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "debug",
+            "program": "lib/main_development.dart",
+            "args": ["--flavor", "development"]
+        },
+        {
+            "name": "doctor production",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release",
+            "program": "lib/main_production.dart",
+            "args": ["--flavor", "production"]
+        }
+    ]
+}
