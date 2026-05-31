@@ -44,36 +44,18 @@ jobs:
         working-directory: android
         run: bundle install --jobs 4 --retry 3
 
-      - name: Create Service Account File
+      - name: Create Firebase Service Account File
         working-directory: android
         run: |
-          echo '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}' > service-account.json
+          cat > service-account.json <<EOF
+          ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          EOF
 
-      # تشخيص الملف
-      - name: Check File Exists
+      - name: Verify Files
         working-directory: android
         run: |
-          ls -lah
-          wc -c service-account.json
-
-      # التحقق أن JSON صالح
-      - name: Validate JSON
-        working-directory: android
-        run: |
-          python3 -m json.tool service-account.json > /dev/null
-          echo "JSON VALID"
-
-      # عرض بعض الحقول للتأكد فقط
-      - name: Show Service Account Info
-        working-directory: android
-        run: |
-          python3 -c "
-          import json
-          f=json.load(open('service-account.json'))
-          print('type=',f.get('type'))
-          print('project_id=',f.get('project_id'))
-          print('client_email=',f.get('client_email'))
-          "
+          ls -la
+          test -f service-account.json
 
       - name: Run Fastlane
         working-directory: android
