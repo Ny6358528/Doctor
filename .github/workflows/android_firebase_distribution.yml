@@ -76,5 +76,10 @@ jobs:
       - name: Run Fastlane
         working-directory: android
         env:
+<<<<<<< HEAD
           FIREBASE_APP_ID: ${{ secrets.FIREBASE_APP_ID }}
+=======
+           FIREBASE_APP_ID: ${{ secrets.FIREBASE_APP_ID }}
+           FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+>>>>>>> 5bcd136fb5527634e21d5b55209b8697a8361735
         run: bundle exec fastlane firebase_distribution

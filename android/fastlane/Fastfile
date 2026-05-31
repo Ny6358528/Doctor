@@ -13,7 +13,11 @@ platform :android do
 
     firebase_app_distribution(
       app: ENV["FIREBASE_APP_ID"],
+<<<<<<< HEAD
       service_credentials_file: "../service-account.json",
+=======
+      service_credentials_file: ENV["FIREBASE_SERVICE_ACCOUNT"],
+>>>>>>> 5bcd136fb5527634e21d5b55209b8697a8361735
       android_artifact_type: "APK",
       android_artifact_path: "../build/app/outputs/flutter-apk/app-production-release.apk",
       release_notes: "New build"
