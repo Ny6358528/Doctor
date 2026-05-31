@@ -13,7 +13,6 @@ concurrency:
 
 jobs:
   distribute:
-    name: Build & Distribute APK
     runs-on: ubuntu-latest
 
     steps:
@@ -36,17 +35,24 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: "3.2"
-          bundler-cache: true
 
       - name: Install Flutter Dependencies
         run: flutter pub get
 
-      - name: Verify Flutter Installation
-        run: flutter doctor -v
+      # 🔥 تثبيت Ruby + Fastlane gems
+      - name: Install Ruby Dependencies
+        working-directory: android
+        run: bundle install
 
-      - name: Run Fastlane Firebase Distribution
+      # 🔥 مهم جدًا: تحميل plugins
+      - name: Install Fastlane Plugins
+        working-directory: android
+        run: bundle exec fastlane install_plugins
+
+      # 🚀 تشغيل Fastlane
+      - name: Run Fastlane
         working-directory: android
         env:
-          FIREBASE_CLI_TOKEN: ${{ secrets.FIREBASE_CLI_TOKEN }}
           FIREBASE_APP_ID: ${{ secrets.FIREBASE_APP_ID }}
+          FIREBASE_CLI_TOKEN: ${{ secrets.FIREBASE_CLI_TOKEN }}
         run: bundle exec fastlane firebase_distribution
