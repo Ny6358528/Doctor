@@ -16,70 +16,42 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # ========================
-      # 1. Checkout code
-      # ========================
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      # ========================
-      # 2. Setup Java
-      # ========================
       - name: Setup Java 17
         uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: 17
 
-      # ========================
-      # 3. Setup Flutter
-      # ========================
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
           channel: stable
           cache: true
 
-      # ========================
-      # 4. Setup Ruby + Bundler
-      # ========================
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: "3.3"
           bundler-cache: true
 
-      # ========================
-      # 5. Install Flutter deps
-      # ========================
       - name: Install Flutter Dependencies
         run: flutter pub get
 
-      # ========================
-      # 6. Install Fastlane deps
-      # ========================
       - name: Install Ruby Dependencies
         working-directory: android
         run: bundle install --jobs 4 --retry 3
 
-      # ========================
-      # 7. Create service account file (IMPORTANT)
-      # ========================
+      # ✅ مهم: نحول JSON من Secret إلى ملف فعلي
       - name: Create Service Account File
         working-directory: android
         run: |
           echo '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}' > service-account.json
 
-      # ========================
-      # 8. Run Fastlane
-      # ========================
       - name: Run Fastlane
         working-directory: android
         env:
-<<<<<<< HEAD
           FIREBASE_APP_ID: ${{ secrets.FIREBASE_APP_ID }}
-=======
-           FIREBASE_APP_ID: ${{ secrets.FIREBASE_APP_ID }}
-           FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
->>>>>>> 5bcd136fb5527634e21d5b55209b8697a8361735
         run: bundle exec fastlane firebase_distribution
