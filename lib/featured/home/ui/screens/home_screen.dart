@@ -30,9 +30,12 @@ class HomeScreen extends StatelessWidget {
               Text('Recommendation Doctor', style: AppTextStyles.text18Black()),
               SizedBox(height: 12.h),
               ListViewRecommendtionDoctor(),
+<<<<<<< HEAD
 
 
               
+=======
+>>>>>>> fabe6b2080f270f6777dbea1b760a41f6d62cc4c
             ],
           ),
         ),
