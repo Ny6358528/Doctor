@@ -35,6 +35,22 @@ class AppTextStyles {
        fontWeight: FontWeight.w400,
     );
   }
+  static TextStyle text18white() {
+    return  TextStyle(
+      fontSize: 18.sp,
+
+      color: Colors.white,
+       fontWeight: FontWeight.w700,
+    );
+  }
+  static TextStyle text18Black() {
+    return  TextStyle(
+      fontSize: 18.sp,
+
+      color: Colors.black,
+       fontWeight: FontWeight.w700,
+    );
+  }
    static TextStyle text14Black() {
     return  TextStyle(
       fontSize: 14.sp,
