@@ -9,4 +9,5 @@ class AppColor {
      static const Color lightgeryColor=Color(0xffEDEDED0);
      static const Color lightergeryColor=Color(0xffFDFDFF);
     static const Color redErrorColor=Color(0xffFF4C5E);
+    static const Color lightBlueColor=Color(0xffF4F8FF);
 }
