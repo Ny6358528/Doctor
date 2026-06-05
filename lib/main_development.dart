@@ -5,6 +5,6 @@ import 'featured/app/screens/docdoc.dart';
 
 void main() {
 
-DependencyInjection.init();
+init();
   runApp(const Docdoc());
 }
